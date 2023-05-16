@@ -18,7 +18,6 @@ class V1::CartService
       cart = new
       cart.reference = params[:reference]
       cart.add_items = params[:lineItems]
-      cart.line_items
       cart.apply_cereal_discounts
 
       CartServiceSerializer.new(cart).to_json
