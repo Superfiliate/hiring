@@ -28,6 +28,6 @@ Things you may want to cover:
   - docker-compose run app bundle exec rake db:migrate
 
 * Run tests
-  - docker-compose run test bundle exec rake db:create RAILS_ENV=test
-  - docker-compose run test bundle exec rake db:migrate RAILS_ENV=test
+  - docker-compose run test bundle exec rake db:create
+  - docker-compose run test bundle exec rake db:migrate
   - docker-compose run test bundle exec rspec

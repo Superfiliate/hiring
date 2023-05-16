@@ -13,6 +13,6 @@ class V1::CartItem
   end
 
   def price_with_discount
-    @final_price = (price - (price * discount).fdiv(100))
+    @final_price = (price - (price * discount).fdiv(100))&.floor(2)
   end
 end

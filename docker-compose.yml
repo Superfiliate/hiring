@@ -44,7 +44,7 @@ services:
       DATABASE: hiring_test
       RAILS_ENV: test
     ports:
-      - "3000:3000"
+      - "3002:30002"
     depends_on:
       - db
     networks:
