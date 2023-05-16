@@ -36,7 +36,7 @@ RSpec.describe V1::CartService do
                 }],
               'reference'=> reference
             },
-            'id'=> nil,
+            'id'=> reference,
             'relationships'=> {
               'line_items'=> { "data"=> [{ 'id'=> "1", 'type'=> 'cart_item_service' }] }
             }, 'type'=> "cart_service"
@@ -83,7 +83,7 @@ RSpec.describe V1::CartService do
               ],
               'reference'=> reference
             },
-            'id'=> nil,
+            'id'=> reference,
             'relationships'=> anything, 'type'=> 'cart_service'
           }
         }
@@ -126,7 +126,7 @@ RSpec.describe V1::CartService do
               ],
               'reference'=> reference
             },
-            'id'=> nil,
+            'id'=> reference,
             'relationships'=> anything, 'type'=> 'cart_service'
           }
         }
@@ -173,7 +173,7 @@ RSpec.describe V1::CartService do
               ],
               'reference'=> reference
             },
-            'id'=> nil,
+            'id'=> reference,
             'relationships'=> anything, 'type'=> 'cart_service'
           }
         }
@@ -224,7 +224,7 @@ RSpec.describe V1::CartService do
               ],
               'reference'=> reference
             },
-            'id'=> nil,
+            'id'=> reference,
             'relationships'=> anything, 'type'=> 'cart_service'
           }
         }
@@ -279,7 +279,7 @@ RSpec.describe V1::CartService do
               ],
               'reference'=> reference
             },
-            'id'=> nil,
+            'id'=> reference,
             'relationships'=> anything, 'type'=> 'cart_service'
           }
         }

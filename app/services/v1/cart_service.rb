@@ -2,6 +2,8 @@ class V1::CartService
   attr_accessor :reference
   attr_reader :line_items, :id
 
+  alias_method :id, :reference
+
   UNPERMITTED_DISCOUNT_APPLICABLE = %w(KETO)
   CEREAL_DISCOUNT_RULES = {
     1 => 0,
