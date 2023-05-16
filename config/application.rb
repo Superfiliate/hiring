@@ -29,5 +29,6 @@ module Hiring
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.debug_exception_response_format = :api
+    config.logger = Logger.new(STDOUT)
   end
 end

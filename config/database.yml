@@ -1,7 +1,11 @@
-<%= ENV['RAILS_ENV'] %>:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['DATABASE'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: 5
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+<%= ENV['RAILS_ENV'] %>:
+  <<: *default
+  database: <%= ENV['DATABASE'] %>

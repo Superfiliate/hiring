@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USERNAME: postgres
+      DB_HOST: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - site-net
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle/gems
+    environment:
+      DB_HOST: db
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      DATABASE: hiring_development
+      RAILS_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - site-net
+networks:
+  site-net:
+    driver: bridge
+volumes:
+  db_data:
+  gem_cache:
