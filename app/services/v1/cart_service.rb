@@ -66,6 +66,6 @@ class V1::CartService
   end
 
   def current_discount
-    CEREAL_DISCOUNT_RULES[cereal_boxes_with_discount] || 5
+    CEREAL_DISCOUNT_RULES[cereal_boxes_with_discount] || CEREAL_DISCOUNT_RULES[5]
   end
 end

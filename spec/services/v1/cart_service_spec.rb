@@ -234,5 +234,60 @@ RSpec.describe V1::CartService do
         expect(subject).to match(expect_response)
       end
     end
+
+    context 'when cart has 6 promotions itens' do
+      let(:discount) { 25 }
+      let(:line_items) do
+        [
+          peanut_butter_item,
+          banana_cake_item,
+          cocoa_item,
+          fruity_item,
+          oat_item,
+          strawberry_item,
+          oat_item,
+        ]
+      end
+
+      let(:expect_response) do
+        {
+          'data'=> {
+            'attributes'=> {
+              'final_price' => 103.29,
+              'line_items'=> [
+                { 'collection'=> line_items[0][:collection], 'discount'=> discount, 'final_price'=> 15.0, 'id'=> 1, 'name'=> line_items[0][:name], 'price'=> 20.0,
+                  'with_discount'=> true
+                },
+                { 'collection'=> line_items[1][:collection], 'discount'=> discount, 'final_price'=> 11.55, 'id'=> 2, 'name'=> line_items[1][:name], 'price'=> 15.4,
+                  'with_discount'=> true
+                },
+                { 'collection'=> line_items[2][:collection], 'discount'=> 0, 'final_price'=> 9.99, 'id'=> 3, 'name'=> line_items[2][:name], 'price'=> 9.99,
+                  'with_discount'=> false
+                },
+                { 'collection'=> line_items[3][:collection], 'discount'=> discount, 'final_price'=> 24.0, 'id'=> 4, 'name'=> line_items[3][:name], 'price'=> 32,
+                  'with_discount'=> true
+                },
+                { 'collection'=> line_items[4][:collection], 'discount'=> discount, 'final_price'=> 14.25, 'id'=> 5, 'name'=> line_items[4][:name], 'price'=> 19,
+                  'with_discount'=> true
+                },
+                { 'collection'=> line_items[5][:collection], 'discount'=> discount, 'final_price'=> 14.25, 'id'=> 6, 'name'=> line_items[5][:name], 'price'=> 19,
+                  'with_discount'=> true
+                },
+                { 'collection'=> line_items[6][:collection], 'discount'=> discount, 'final_price'=> 14.25, 'id'=> 7, 'name'=> line_items[6][:name], 'price'=> 19,
+                  'with_discount'=> true
+                },
+              ],
+              'reference'=> reference
+            },
+            'id'=> nil,
+            'relationships'=> anything, 'type'=> 'cart_service'
+          }
+        }
+      end
+
+      it 'applies a discount of 25%' do
+        expect(subject).to match(expect_response)
+      end
+    end
   end
 end
