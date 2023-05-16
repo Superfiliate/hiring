@@ -24,6 +24,29 @@ RSpec.describe V1::CartService do
     let(:oat_item) {{ name: 'Oat', price: '19', collection: 'DEFAULT' }}
     let(:strawberry_item) {{ name: 'Strawberry', price: '19', collection: 'DEFAULT' }}
 
+    context 'when cart does not have itens' do
+      let(:line_items) { [] }
+      let(:expect_response) do
+        {
+          'data'=> {
+            'attributes'=> {
+              'final_price' => 0.0,
+              'line_items'=> [],
+              'reference'=> reference
+            },
+            'id'=> reference,
+            'relationships'=> {
+              'line_items'=> { "data"=> [] }
+            }, 'type'=> "cart_service"
+          }
+        }
+      end
+
+      specify do
+        expect(subject).to eq(expect_response)
+      end
+    end
+
     context 'when cart does not have promotion itens' do
       let(:expect_response) do
         {

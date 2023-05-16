@@ -44,6 +44,8 @@ class V1::CartService
   end
 
   def final_price
+    return 0.0 if line_items.blank?
+
     line_items.map(&:final_price).reduce(:+).floor(2)
   end
 
