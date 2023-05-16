@@ -9,4 +9,3 @@ COPY .env /app/.env
 RUN bundle install
 COPY . ./
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]

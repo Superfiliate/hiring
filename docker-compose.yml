@@ -15,6 +15,7 @@ services:
       - site-net
   app:
     build: .
+    entrypoint: ./entrypoints/docker-entrypoint.sh
     volumes:
       - .:/app
       - gem_cache:/usr/local/bundle/gems
@@ -24,6 +25,24 @@ services:
       POSTGRES_PASSWORD: password
       DATABASE: hiring_development
       RAILS_ENV: development
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - site-net
+
+  test:
+    build: .
+    volumes:
+      - .:/app
+      - gem_cache:/usr/local/bundle/gems
+    environment:
+      DB_HOST: db
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      DATABASE: hiring_test
+      RAILS_ENV: test
     ports:
       - "3000:3000"
     depends_on:
