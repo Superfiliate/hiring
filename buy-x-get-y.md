@@ -1,4 +1,4 @@
-### Instructions
+# Instructions
 
 With the holidays approaching, a popular cereal shop has decided to offer its customers a special discount known as "Buy X get Y."
 
